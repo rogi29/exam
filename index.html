@@ -87,7 +87,6 @@
     <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <script>
-
             $r({url: 'data/packages.json'}).ajax({
                 method: 'GET',
                 callback: init
@@ -109,6 +108,7 @@
                                 }
                             };
                         };
+
                 $r('.right_arrow').on('click', function(e, t) {
                     e.preventDefault();
 
@@ -137,8 +137,6 @@
 
                     return false;
                 });
-
-
 
                 $('#date').daterangepicker({
                     autoUpdateInput: false,
