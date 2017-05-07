@@ -93,32 +93,36 @@
             });
 
             function init(error, res) {
-                var data = JSON.parse(res.body),
-                        app = new Vue({
-                            el: '#app',
-                            data: data
-                        }),
-                        filter = function (filterName) {
-                            return function() {
-                                var filter = $r('#' + filterName).value();
+                var data        = JSON.parse(res.body),
+                    card        = $r('.card').el[0] || $r('.card').el,
+                    cardWidth   = $r(card).size('width') - 20,
+                    app = new Vue({
+                        el: '#app',
+                        data: data
+                    });
 
-                                if(filter != app.filters[filterName]) {
-                                    $r('.packages .container').setTranslateX(0);
-                                    app.filters[filterName] = filter;
-                                }
-                            };
-                        };
+
+                function filter (filterName) {
+                    return function() {
+                        var filter = $r('#' + filterName).value();
+
+                        if(filter != app.filters[filterName]) {
+                            $r('.packages .container').setTranslateX(0);
+                            app.filters[filterName] = filter;
+                        }
+                    };
+                }
 
                 $r('.right_arrow').on('click', function(e, t) {
                     e.preventDefault();
 
                     var
-                            packagesWidth   = $r('.packages').size('width'),
-                            containerWidth  = $r('.packages .container').size('width'),
-                            x               = $r('.packages .container').getTranslate().x;
+                        packagesWidth   = $r('.packages').size('width'),
+                        containerWidth  = $r('.packages .container').size('width'),
+                        x               = $r('.packages .container').getTranslate().x;
 
                     if(containerWidth > packagesWidth && containerWidth+x > packagesWidth) {
-                        $r('.packages .container').setTranslateX(x-160);
+                        $r('.packages .container').setTranslateX(x-cardWidth);
                     }
 
                     return false;
@@ -127,12 +131,13 @@
                 $r('.left_arrow').on('click', function(e, t) {
                     e.preventDefault();
 
-                    var containerWidth  = $r('.packages .container').size('width'),
-                            packagesWidth   = $r('.packages').size('width'),
-                            x               = $r('.packages .container').getTranslate().x;
+                    var
+                        containerWidth  = $r('.packages .container').size('width'),
+                        packagesWidth   = $r('.packages').size('width'),
+                        x               = $r('.packages .container').getTranslate().x;
 
                     if(x < 0) {
-                        $r('.packages .container').setTranslateX(x+160);
+                        $r('.packages .container').setTranslateX(x+cardWidth);
                     }
 
                     return false;

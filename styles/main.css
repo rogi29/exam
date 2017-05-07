@@ -141,7 +141,7 @@ input {
 
 .card {
     display: inline-block;
-    min-width: 160px;
+    width: 160px;
     height: 180px;
     padding: 14px 20px;
     border-right: 1px solid #c4c8d1;
