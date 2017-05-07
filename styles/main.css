@@ -137,6 +137,7 @@ input {
     display: flex;
     box-sizing: border-box;
     width: auto;
+    padding: 0;
 }
 
 .card {

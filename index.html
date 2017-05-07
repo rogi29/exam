@@ -83,6 +83,7 @@
     <script src="scripts/vue.min.js"></script>
     <script src="scripts/ruddy.js"></script>
     <script src="scripts/ajax.js"></script>
+    <script src="scripts/animation.js"></script>
     <script src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
@@ -94,8 +95,9 @@
 
             function init(error, res) {
                 var data        = JSON.parse(res.body),
-                    card        = $r('.card').el[0] || $r('.card').el,
-                    cardWidth   = $r(card).size('width') - 20,
+                    left        = null,
+                    right       = null,
+                    cardWidth   = $r('.card').size('width')+41,
                     app = new Vue({
                         el: '#app',
                         data: data
@@ -113,7 +115,7 @@
                     };
                 }
 
-                $r('.right_arrow').on('click', function(e, t) {
+                $r('.right_arrow').on('mousedown', function(e, t) {
                     e.preventDefault();
 
                     var
@@ -122,7 +124,16 @@
                         x               = $r('.packages .container').getTranslate().x;
 
                     if(containerWidth > packagesWidth && containerWidth+x > packagesWidth) {
-                        $r('.packages .container').setTranslateX(x-cardWidth);
+                        $r ('.packages .container').animate({
+                            style:      'x',
+                            startPoint: x,
+                            endPoint:   x-cardWidth,
+                            delta:      $r(false).setDelta('easeOut',{
+                                name: 'backbow',
+                                progress: 1
+                            }),
+                            duration:   0.5
+                        });
                     }
 
                     return false;
@@ -136,8 +147,28 @@
                         packagesWidth   = $r('.packages').size('width'),
                         x               = $r('.packages .container').getTranslate().x;
 
-                    if(x < 0) {
-                        $r('.packages .container').setTranslateX(x+cardWidth);
+                    if(x+cardWidth-41 < 0) {
+                        $r ('.packages .container').animate({
+                            style:      'x',
+                            startPoint: x,
+                            endPoint:   x+cardWidth,
+                            delta:      $r(false).setDelta('easeOut',{
+                                name: 'backbow',
+                                progress: 1
+                            }),
+                            duration:   0.5
+                        });
+                    } else {
+                        $r ('.packages .container').animate({
+                            style:      'x',
+                            startPoint: x,
+                            endPoint:   0,
+                            delta:      $r(false).setDelta('easeOut',{
+                                name: 'backbow',
+                                progress: 1
+                            }),
+                            duration:   0.5
+                        });
                     }
 
                     return false;
