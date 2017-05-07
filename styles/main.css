@@ -41,11 +41,9 @@ a {
 }
 
 .slider {
-    width: 80%;
+    width: 84%;
     margin: 94px auto;
-    background-image: -moz-linear-gradient( 90deg, rgba(255,255,255,0) 0%, rgb(255,255,255) 100%);
-    background-image: -webkit-linear-gradient( 90deg, rgba(255,255,255,0) 0%, rgb(255,255,255) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgba(255,255,255,0) 0%, rgb(255,255,255) 100%);
+    border-radius: 2px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
 }
 
@@ -55,6 +53,7 @@ a {
     text-align: right;
     right: 0;
     background: #f0f1f5;
+    border-radius: 2px 2px 0 0;
     border-bottom: 1px solid #ccc;
 }
 
@@ -78,17 +77,19 @@ a {
 .slider .container {
     display: flex;
     position: relative;
-    padding: 15px 10px;
+    padding: 10px 10px;
 }
 
 .left_arrow {
     width: 30px;
+    margin: 10px 0;
     text-align: left;
     border-right: 1px solid #c4c8d1;
 }
 
 .right_arrow {
     width: 30px;
+    margin: 10px 0;
     text-align: right;
     border-left: 1px solid #c4c8d1;
 }
@@ -96,18 +97,29 @@ a {
 .left_arrow i, .right_arrow i  {
     color: #243262;
     font-size: 38pt;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .packages {
-    display: flex;
-    margin: 0 auto;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    height: 180px;
     text-align: right;
 }
 
+.packages .container {
+    float: left;
+    display: flex;
+    box-sizing: border-box;
+    width: auto;
+}
+
 .card {
+    display: inline-block;
+    min-width: 160px;
+    height: 180px;
     padding: 14px 20px;
-    max-width: 20%;
     border-right: 1px solid #c4c8d1;
 }
 
@@ -173,25 +185,6 @@ a {
 
     .slider {
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 950px) {
-
-    .packages {
-        display: block;
-        overflow: hidden;
-        height: 180px;
-    }
-
-    .packages .container {
-        position: relative;
-    }
-
-    .card {
-        display: inline-block;
-        min-width: 160px;
-        height: 180px;
     }
 }
 

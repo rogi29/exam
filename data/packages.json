@@ -1,0 +1,141 @@
+{
+  "filters": {
+    "type": "all",
+    "dest": "all",
+    "date": "all"
+  },
+  "packages": [
+    {
+      "id": "0",
+      "title": "טיסה + מלון לאמסטרדם",
+      "dest": "amsterdam",
+      "date": "12/01/14 - 15/01/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight+hotel"
+    },
+    {
+      "id": "1",
+      "title": "טיסה + מלון לברלין",
+      "dest": "berlin",
+      "date": "12/01/14 - 15/01/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight+hotel"
+    },
+    {
+      "id": "2",
+      "title": "מלון לאמסטרדם",
+      "dest": "amsterdam",
+      "date": "12/01/14 - 15/01/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "hotel"
+    },
+    {
+      "id": "3",
+      "title": "מלון לברלין",
+      "dest": "berlin",
+      "date": "12/01/14 - 15/01/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "hotel"
+    },
+    {
+      "id": "4",
+      "title": "טיסה לאמסטרדם",
+      "dest": "amsterdam",
+      "date": "12/01/14 - 15/01/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight"
+    },
+    {
+      "id": "5",
+      "title": "טיסה לברלין",
+      "dest": "berlin",
+      "date": "12/01/14 - 15/01/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight"
+    },
+    {
+      "id": "6",
+      "title": "טיסה + מלון לאמסטרדם",
+      "dest": "amsterdam",
+      "date": "12/05/14 - 15/05/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight+hotel"
+    },
+    {
+      "id": "7",
+      "title": "טיסה + מלון לברלין",
+      "dest": "berlin",
+      "date": "12/05/14 - 15/05/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight+hotel"
+    },
+    {
+      "id": "8",
+      "title": "מלון לאמסטרדם",
+      "dest": "amsterdam",
+      "date": "12/05/14 - 15/05/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "hotel"
+    },
+    {
+      "id": "9",
+      "title": "מלון לברלין",
+      "dest": "berlin",
+      "date": "12/05/14 - 15/05/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "hotel"
+    },
+    {
+      "id": "10",
+      "title": "טיסה לאמסטרדם",
+      "dest": "amsterdam",
+      "date": "12/05/14 - 15/05/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight"
+    },
+    {
+      "id": "11",
+      "title": "טיסה לברלין",
+      "dest": "berlin",
+      "date": "12/05/14 - 15/05/14",
+      "hotel": "TRAVELLODGE LHOSPI",
+      "period": "3 לילות , כולל א. בוקר",
+      "price": 499,
+      "price_type": "adult",
+      "type": "flight"
+    }
+  ]
+}
