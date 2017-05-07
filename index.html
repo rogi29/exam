@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lognet Exam</title>
-    <link class="cssfx" rel="stylesheet" href="styles/main.css">
     <link class="cssfx" rel="stylesheet" href="styles/font-awesome.min.css">
+    <link class="cssfx" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <link class="cssfx" rel="stylesheet" href="styles/main.css">
     <!--[if IE 7]>
     <link rel="stylesheet" href="styles/font-awesome-ie7.css">
     <![endif]-->
@@ -16,11 +17,7 @@
             <div class="header">
                 <div class="dropdown">
                     <div class="select">
-                        <select id="date" dir="rtl">
-                            <option value="all">הכל</option>
-                            <option value="12/01/14 - 15/01/14">12/01/14 - 15/01/14</option>
-                            <option value="12/05/14 - 15/05/14">12/05/14 - 15/05/14</option>
-                        </select>
+                        <input id="date" name="datefilter" placeholder="הכל" />
                     </div>
                     <span>תאריך</span>
                 </div>
@@ -53,7 +50,7 @@
                         <div class="card" v-for="package in packages" v-if="
                                 (filters.type == package.type || filters.type == 'all') &&
                                 (filters.dest == package.dest || filters.dest == 'all') &&
-                                (filters.date == package.date || filters.date == 'all')">
+                                (filters.date == package.date || filters.date == '')">
                             <div class="inner">
                                 <h3><a href="#package">{{package.title}}</a></h3>
                                 <div class="top">
@@ -86,55 +83,75 @@
     <script src="scripts/vue.min.js"></script>
     <script src="scripts/ruddy.js"></script>
     <script src="scripts/ajax.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <script>
-        $r({url: 'data/packages.json'}).ajax({
-            method: 'GET',
-            callback: init
-        });
 
-        function init(error, res) {
-            var data = JSON.parse(res.body),
-                app = new Vue({
-                    el: '#app',
-                    data: data
-                }),
-                filter = function (filterName) {
-                    return function(e, t) {
-                        var filter = $r('#' + filterName).value();
-
-                        if(filter != app.filters[filterName]) {
-                            $r('.packages .container').setTranslateX(0);
-                            app.filters[filterName] = filter;
-                        }
-                    };
-                };
-
-            $r('.right_arrow').on('click', function(e, t) {
-                var
-                    packagesWidth   = $r('.packages').size('width'),
-                    containerWidth  = $r('.packages .container').size('width'),
-                    x               = $r('.packages .container').getTranslate().x;
-
-                if(containerWidth > packagesWidth && containerWidth+x > packagesWidth) {
-                    $r('.packages .container').setTranslateX(x-160);
-                }
+            $r({url: 'data/packages.json'}).ajax({
+                method: 'GET',
+                callback: init
             });
 
+            function init(error, res) {
+                var data = JSON.parse(res.body),
+                        app = new Vue({
+                            el: '#app',
+                            data: data
+                        }),
+                        filter = function (filterName) {
+                            return function() {
+                                var filter = $r('#' + filterName).value();
 
-            $r('.left_arrow').on('click', function(e, t) {
-                var containerWidth  = $r('.packages .container').size('width'),
-                    packagesWidth   = $r('.packages').size('width'),
-                    x               = $r('.packages .container').getTranslate().x;
+                                if(filter != app.filters[filterName]) {
+                                    $r('.packages .container').setTranslateX(0);
+                                    app.filters[filterName] = filter;
+                                }
+                            };
+                        };
 
-                if(x < 0) {
-                    $r('.packages .container').setTranslateX(x+160);
-                }
-            });
 
-            $r('#date').on('change', filter('date'));
-            $r('#dest').on('change', filter('dest'));
-            $r('#type').on('change', filter('type'));
-        }
+                $('#date').daterangepicker({
+                    autoUpdateInput: false,
+                    locale: {
+                        cancelLabel: 'Clear'
+                    }
+                });
+
+                $('#date').on('apply.daterangepicker', function(ev, picker) {
+                    $(this).val(picker.startDate.format('DD/MM/YY') + ' - ' + picker.endDate.format('DD/MM/YY'));
+                    filter('date')();
+                });
+
+                $('#date').on('cancel.daterangepicker', function(ev, picker) {
+                    $(this).val('');
+                    filter('date')();
+                });
+
+                $r('.right_arrow').on('click', function(e, t) {
+                    var
+                            packagesWidth   = $r('.packages').size('width'),
+                            containerWidth  = $r('.packages .container').size('width'),
+                            x               = $r('.packages .container').getTranslate().x;
+
+                    if(containerWidth > packagesWidth && containerWidth+x > packagesWidth) {
+                        $r('.packages .container').setTranslateX(x-160);
+                    }
+                });
+
+
+                $r('.left_arrow').on('click', function(e, t) {
+                    var containerWidth  = $r('.packages .container').size('width'),
+                            packagesWidth   = $r('.packages').size('width'),
+                            x               = $r('.packages .container').getTranslate().x;
+
+                    if(x < 0) {
+                        $r('.packages .container').setTranslateX(x+160);
+                    }
+                });
+                $r('#dest').on('change', filter('dest'));
+                $r('#type').on('change', filter('type'));
+            }
     </script>
 </body>
 </html>
