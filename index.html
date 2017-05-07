@@ -109,25 +109,6 @@
                                 }
                             };
                         };
-
-
-                $('#date').daterangepicker({
-                    autoUpdateInput: false,
-                    locale: {
-                        cancelLabel: 'Clear'
-                    }
-                });
-
-                $('#date').on('apply.daterangepicker', function(ev, picker) {
-                    $(this).val(picker.startDate.format('DD/MM/YY') + ' - ' + picker.endDate.format('DD/MM/YY'));
-                    filter('date')();
-                });
-
-                $('#date').on('cancel.daterangepicker', function(ev, picker) {
-                    $(this).val('');
-                    filter('date')();
-                });
-
                 $r('.right_arrow').on('click', function(e, t) {
                     e.preventDefault();
 
@@ -156,6 +137,26 @@
 
                     return false;
                 });
+
+
+
+                $('#date').daterangepicker({
+                    autoUpdateInput: false,
+                    locale: {
+                        cancelLabel: 'Clear'
+                    }
+                });
+
+                $('#date').on('apply.daterangepicker', function(ev, picker) {
+                    $(this).val(picker.startDate.format('DD/MM/YY') + ' - ' + picker.endDate.format('DD/MM/YY'));
+                    filter('date')();
+                });
+
+                $('#date').on('cancel.daterangepicker', function(ev, picker) {
+                    $(this).val('');
+                    filter('date')();
+                });
+
                 $r('#dest').on('change', filter('dest'));
                 $r('#type').on('change', filter('type'));
             }
