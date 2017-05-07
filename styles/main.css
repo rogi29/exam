@@ -214,6 +214,14 @@ input {
 }
 
 @media screen and (max-width: 730px) {
+    .wrapper {
+        margin: 0 auto;
+    }
+
+    .slider {
+        margin: 0 auto;
+    }
+
     .daterangepicker {
         width: 100%;
         text-align: center;
