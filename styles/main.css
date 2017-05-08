@@ -59,12 +59,33 @@ input {
     -ms-progress-appearance: none;
 }
 
+.wait-ani {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    z-index: 2;
+}
+
+.wait-ani img {
+    margin: 60px auto;
+}
+
+.wait-ani.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+}
+
 .wrapper {
     width: 1280px;
     margin: 64px auto;
 }
 
 .slider {
+    position: relative;
     width: 84%;
     margin: 94px auto;
     border-radius: 2px;
