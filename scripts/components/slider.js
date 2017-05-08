@@ -9,6 +9,22 @@
                 data:   data
             });
 
+        function filter (app, element, filterName) {
+            return function() {
+                var filter = element.find('.select-' + filterName).value();
+
+                if(filter != app.filters[filterName]) {
+    		            count = 0;
+                    element.find('.packages .container').setTranslateX(0);
+                    app.filters[filterName] = filter;
+                }
+            };
+        }
+
+        function loaded (element) {
+            return element.find('.wait-ani').class('wait-ani hidden');
+        }
+
         element.find('.right_arrow').on('click', function(e, t) {
             e.preventDefault();
 
@@ -79,24 +95,10 @@
         loaded(element);
 
         return {
-            app: app
+            app: app,
+            filter: filter
         };
     };
-
-    function filter (app, element, filterName) {
-        return function() {
-            var filter = element.find('.select-' + filterName).value();
-
-            if(filter != app.filters[filterName]) {
-                element.find('.packages .container').setTranslateX(0);
-                app.filters[filterName] = filter;
-            }
-        };
-    }
-
-    function loaded (element) {
-        return element.find('.wait-ani').class('wait-ani hidden');
-    }
 
     window.Slider = Slider;
 })($r, $);
