@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -105,4 +106,113 @@
         });
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lognet Exam</title>
+    <link class="cssfx" rel="stylesheet" href="styles/font-awesome.min.css">
+    <link class="cssfx" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <link class="cssfx" rel="stylesheet" href="styles/main.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="styles/font-awesome-ie7.css">
+    <![endif]-->
+</head>
+<body>
+    <div class="wrapper">
+        <div id="app" class="slider">
+            <div class="wait-ani">
+                <img src="images/wait.gif" alt="Waiting" />
+            </div>
+            <div class="header">
+                <div class="dropdown">
+                    <input class="select-date" name="datefilter" placeholder="הכל" />
+                    <span>תאריך</span>
+                </div>
+                <div class="dropdown">
+                    <div class="select">
+                        <select class="select-dest" dir="rtl">
+                            <option value="all">כל היעדים</option>
+                            <option value="amsterdam">אמסטרדם</option>
+                            <option value="berlin">ברלין</option>
+                        </select>
+                    </div>
+                    <span>יעד</span>
+                </div>
+                <div class="dropdown last">
+                    <div class="select">
+                        <select class="select-type" dir="rtl">
+                            <option value="all">הכל</option>
+                            <option value="hotel">מלון</option>
+                            <option value="flight">טיסה</option>
+                            <option value="flight+hotel">מלון+טיסה</option>
+                        </select>
+                    </div>
+                    <span>סוג</span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="left_arrow"><a href="#left"><i class="fa fa-angle-left" aria-hidden="true"></i></a></div>
+                <div class="packages">
+                    <div class="container">
+                        <div class="card" v-for="package in packages" v-if="
+                                (filters.type == package.type || filters.type == 'all') &&
+                                (filters.dest == package.dest || filters.dest == 'all') &&
+                                (filters.date == package.date || filters.date == '')">
+                            <div class="inner">
+                                <h3><a href="#package">{{package.title}}</a></h3>
+                                <div class="top">
+                                    <div class="date">{{package.date}}</div>
+                                    <div class="desc">{{package.hotel}}</div>
+                                    <div class="rating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star empty" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="period">{{package.period}}</div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="price">${{package.price}}</div>
+                                    <div class="age" v-if="package.price_type == 'adult'">
+                                        מחיר למבוגר
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_arrow"><a href="#right"><i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/cssfx.js"></script>
+    <script src="scripts/vue.min.js"></script>
+    <script src="scripts/ruddy.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script src="scripts/animation.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script src="scripts/components/slider.js"></script>
+    <script>
+        $r({url: 'data/packages.json'}).ajax({
+            method: 'GET',
+            callback: function(err, res) {
+                var app, data;
+
+                if(err != null) {
+                    Slider('#app', {packages: [], filters: {}});
+                    return;
+                }
+
+                Slider('#app', JSON.parse(res.body));
+            }
+        });
+    </script>
+</body>
+>>>>>>> origin/master
 </html>

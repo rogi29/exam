@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
@@ -303,4 +304,301 @@ input {
     .select select {
         width: 100%;
     }
+=======
+* {
+    margin: 0;
+    padding: 0;
+    color: #626c88;
+    font-size: 10pt;
+    font-family: Arial;
+ }
+
+a {
+    text-decoration: none;
+}
+
+.daterangepicker {
+    display: none;
+}
+
+input {
+    display: inline-block;
+    text-align: right;
+    font-size: 12pt;
+    padding-right: 5px;
+    width: 160px;
+    height: 28px;
+    border-radius: 2px;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: none;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.38);
+}
+
+.calendar  {
+    padding: 20px;
+}
+
+.select {
+    display: inline-block;
+    text-align: right;
+    width: 160px;
+    height: 28px;
+    background: url(../images/arrow_dropdown.png) no-repeat left #fff;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.38);
+}
+
+.select select {
+    background: transparent;
+    width: 160px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 28px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: none;
+}
+
+.wait-ani {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    z-index: 2;
+}
+
+.wait-ani img {
+    margin: 60px auto;
+}
+
+.wait-ani.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+}
+
+.wrapper {
+    width: 1280px;
+    margin: 64px auto;
+}
+
+.slider {
+    position: relative;
+    width: 84%;
+    margin: 94px auto;
+    border-radius: 2px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+.slider .header {
+    height: 30px;
+    padding: 10px 12px;
+    text-align: right;
+    right: 0;
+    background: #f0f1f5;
+    border-radius: 2px 2px 0 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.slider .header .dropdown {
+    display: inline-block;
+    padding: 0 14px;
+    border-right: 1px solid #c4c8d1;
+}
+
+.slider .header .dropdown.last {
+    border-right: none;
+}
+
+.slider .header span {
+    color: #233161;
+    font-size: 14pt;
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.slider .container {
+    display: flex;
+    position: relative;
+    padding: 10px 10px;
+}
+
+.left_arrow {
+    width: 30px;
+    margin: 10px 0;
+    text-align: left;
+    border-right: 1px solid #c4c8d1;
+}
+
+.right_arrow {
+    width: 30px;
+    margin: 10px 0;
+    text-align: right;
+    border-left: 1px solid #c4c8d1;
+}
+
+.left_arrow i, .right_arrow i  {
+    color: #243262;
+    font-size: 38pt;
+    margin-top: 50px;
+}
+
+.packages {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    height: 180px;
+    text-align: right;
+}
+
+.packages .container {
+    float: left;
+    display: flex;
+    box-sizing: border-box;
+    width: auto;
+    padding: 0;
+}
+
+.card {
+    display: inline-block;
+    width: 160px;
+    height: 180px;
+    padding: 14px 20px;
+    border-right: 1px solid #c4c8d1;
+}
+
+.card.last {
+    border: none;
+}
+
+.card h3 {
+    color: #233161;
+    font-weight: bold;
+}
+
+.card .top div {
+    margin-top: 3px;
+}
+
+.card .top .rating i {
+    color: #f0a000;
+    font-size: 8pt;
+    margin-left: -2px;
+}
+
+.card .bottom .price {
+    color: #f88e05;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.card .bottom .age, .card .bottom .submit i, .card .bottom .submit span{
+    color: #f88e05;
+}
+
+.card .bottom .age {
+    display: inline-block;
+}
+
+.card .bottom .submit {
+    display: inline-block;
+    text-align: left;
+    left: 0;
+}
+
+.card .bottom .submit span, .card .bottom .submit i {
+    font-size: 8pt;
+}
+
+.card .inner {
+    position: relative;
+}
+
+.card .bottom {
+    bottom: 0;
+}
+
+.card .top .rating i.empty {
+    color: #acb1bd;
+}
+
+@media screen and (max-width: 1300px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .slider {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .wrapper {
+        margin: 0 auto;
+    }
+
+    .slider {
+        margin: 0 auto;
+    }
+
+    .daterangepicker {
+        width: 100%;
+        text-align: center;
+        padding: 4px 0;
+    }
+
+    .daterangepicker.show-calendar .calendar {
+        display: block !important;
+        max-width: 90% !important;
+        margin: 0 auto !important;
+        padding: 20px 0;
+        float: none;
+        clear: none !important;
+    }
+
+    .daterangepicker .daterangepicker_input {
+        width: 90%;
+    }
+
+    .slider .header {
+        height: auto;
+    }
+
+    .slider .header .dropdown {
+        display: block !important;
+        text-align: center;
+        width: inherit;
+        border: none;
+    }
+
+    .slider .header .dropdown span {
+        position: relative;
+        top: -50px;
+    }
+
+    .slider .header .dropdown .select, .slider .header .dropdown input {
+        position: relative;
+        top: 16px;
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .select, input {
+        width: 100%;
+        padding: 0;
+    }
+
+    .select select {
+        width: 100%;
+    }
+>>>>>>> origin/master
 }
