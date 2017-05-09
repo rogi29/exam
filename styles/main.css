@@ -26,7 +26,6 @@ input {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    -ms-progress-appearance: none;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.38);
 }
 
@@ -56,7 +55,35 @@ input {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    -ms-progress-appearance: none;
+}
+
+.select select::-ms-expand {
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    /* IE 5-7 */
+    filter: alpha(opacity=0);
+    /* Good browsers :) */
+    opacity:0;
+}
+
+.wait-ani {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    z-index: 2;
+}
+
+.wait-ani img {
+    margin: 60px auto;
+}
+
+.wait-ani.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
 }
 
 .wrapper {
@@ -65,6 +92,7 @@ input {
 }
 
 .slider {
+    position: relative;
     width: 84%;
     margin: 94px auto;
     border-radius: 2px;
@@ -125,23 +153,26 @@ input {
 }
 
 .packages {
+    position: relative;
     display: block;
     width: 100%;
-    overflow: hidden;
     height: 180px;
+    overflow: hidden;
     text-align: right;
 }
 
 .packages .container {
-    float: left;
+    position: absolute;
     display: flex;
-    box-sizing: border-box;
     width: auto;
+    height: inherit;
+    float: left;
     padding: 0;
+    left: 0;
 }
 
 .card {
-    display: inline-block;
+    min-width: 160px;
     width: 160px;
     height: 180px;
     padding: 14px 20px;

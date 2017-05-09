@@ -14,14 +14,17 @@
 <body>
     <div class="wrapper">
         <div id="app" class="slider">
+            <div class="wait-ani">
+                <img src="images/wait.gif" alt="Waiting" />
+            </div>
             <div class="header">
                 <div class="dropdown">
-                    <input id="date" name="datefilter" placeholder="הכל" />
+                    <input class="select-date" name="datefilter" placeholder="הכל" />
                     <span>תאריך</span>
                 </div>
                 <div class="dropdown">
                     <div class="select">
-                        <select id="dest" dir="rtl">
+                        <select class="select-dest" dir="rtl">
                             <option value="all">כל היעדים</option>
                             <option value="amsterdam">אמסטרדם</option>
                             <option value="berlin">ברלין</option>
@@ -31,7 +34,7 @@
                 </div>
                 <div class="dropdown last">
                     <div class="select">
-                        <select id="type" dir="rtl">
+                        <select class="select-type" dir="rtl">
                             <option value="all">הכל</option>
                             <option value="hotel">מלון</option>
                             <option value="flight">טיסה</option>
@@ -85,113 +88,21 @@
     <script src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script src="scripts/components/slider.js"></script>
     <script>
-            $r({url: 'data/packages.json'}).ajax({
-                method: 'GET',
-                callback: init
-            });
+        $r({url: 'data/packages.json'}).ajax({
+            method: 'GET',
+            callback: function(err, res) {
+                var app, data;
 
-            function init(error, res) {
-                var data        = JSON.parse(res.body),
-                    left        = null,
-                    right       = null,
-                    cardWidth   = $r('.card').size('width')+41,
-                    app = new Vue({
-                        el: '#app',
-                        data: data
-                    });
-
-
-                function filter (filterName) {
-                    return function() {
-                        var filter = $r('#' + filterName).value();
-
-                        if(filter != app.filters[filterName]) {
-                            $r('.packages .container').setTranslateX(0);
-                            app.filters[filterName] = filter;
-                        }
-                    };
+                if(err != null) {
+                    Slider('#app', {packages: [], filters: {}});
+                    return;
                 }
 
-                $r('.right_arrow').on('click', function(e, t) {
-                    e.preventDefault();
-
-                    var
-                        packagesWidth   = $r('.packages').size('width'),
-                        containerWidth  = $r('.packages .container').size('width'),
-                        x               = $r('.packages .container').getTranslate().x;
-
-                    if(containerWidth > packagesWidth && containerWidth+x > packagesWidth) {
-                        $r ('.packages .container').animate({
-                            style:      'x',
-                            startPoint: x,
-                            endPoint:   x-cardWidth,
-                            delta:      $r(false).setDelta('easeOut',{
-                                name: 'backbow',
-                                progress: 1
-                            }),
-                            duration:   0.5
-                        });
-                    }
-
-                    return false;
-                });
-
-                $r('.left_arrow').on('click', function(e, t) {
-                    e.preventDefault();
-
-                    var
-                        containerWidth  = $r('.packages .container').size('width'),
-                        packagesWidth   = $r('.packages').size('width'),
-                        x               = $r('.packages .container').getTranslate().x;
-
-                    if(x+cardWidth-41 < 0) {
-                        $r ('.packages .container').animate({
-                            style:      'x',
-                            startPoint: x,
-                            endPoint:   x+cardWidth,
-                            delta:      $r(false).setDelta('easeOut',{
-                                name: 'backbow',
-                                progress: 1
-                            }),
-                            duration:   0.5
-                        });
-                    } else {
-                        $r ('.packages .container').animate({
-                            style:      'x',
-                            startPoint: x,
-                            endPoint:   0,
-                            delta:      $r(false).setDelta('easeOut',{
-                                name: 'backbow',
-                                progress: 1
-                            }),
-                            duration:   0.5
-                        });
-                    }
-
-                    return false;
-                });
-
-                $('#date').daterangepicker({
-                    autoUpdateInput: false,
-                    locale: {
-                        cancelLabel: 'Clear'
-                    }
-                });
-
-                $('#date').on('apply.daterangepicker', function(ev, picker) {
-                    $(this).val(picker.startDate.format('DD/MM/YY') + ' - ' + picker.endDate.format('DD/MM/YY'));
-                    filter('date')();
-                });
-
-                $('#date').on('cancel.daterangepicker', function(ev, picker) {
-                    $(this).val('');
-                    filter('date')();
-                });
-
-                $r('#dest').on('change', filter('dest'));
-                $r('#type').on('change', filter('type'));
+                Slider('#app', JSON.parse(res.body));
             }
+        });
     </script>
 </body>
 </html>
