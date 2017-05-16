@@ -174,7 +174,7 @@ input {
 .card {
     min-width: 160px;
     width: 160px;
-    height: 180px;
+    height: 152px;
     padding: 14px 20px;
     border-right: 1px solid #c4c8d1;
 }
@@ -224,10 +224,13 @@ input {
 
 .card .inner {
     position: relative;
+    height: 100%;
 }
 
 .card .bottom {
+    position: absolute;
     bottom: 0;
+    right: 0;
 }
 
 .card .top .rating i.empty {
